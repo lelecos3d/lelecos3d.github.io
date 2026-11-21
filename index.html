@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lelecos 3D | Peças impressas em 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FBEEDD;--cream2:#F4E1CB;--brown:#6B3A2A;--dark:#2B1710;--sage:#7A9A6A;--sage-d:#4F6B43;--coral:#E8825A;--gold:#F2C26B}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--brown);font-family:'Fredoka','Trebuchet MS',sans-serif;line-height:1.45;-webkit-font-smoothing:antialiased;
+background:var(--cream) repeating-linear-gradient(0deg,rgba(107,58,42,.045) 0 2px,transparent 2px 12px)}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.hand{font-family:'Caveat',cursive;font-weight:600}
+header{position:sticky;top:0;z-index:5;background:rgba(43,23,16,.96);color:var(--cream)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:30px;letter-spacing:-.5px}
+.brand b{color:var(--sage)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 26px;border-radius:999px;background:var(--coral);color:#3A1E12;font:600 18px 'Fredoka',sans-serif;text-decoration:none;border:0;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{background:#F0956F;transform:translateY(-2px)}
+.btn.alt{background:transparent;border:2px solid currentColor;color:inherit}
+.btn.alt:hover{background:rgba(255,255,255,.1)}
+.btn.small{min-height:44px;padding:0 20px;font-size:16px;width:100%}
+.hero{background:var(--dark) repeating-linear-gradient(0deg,rgba(122,154,106,.13) 0 2px,transparent 2px 10px);color:var(--cream);padding:40px 0 56px;overflow:hidden}
+.hero .wrap{display:grid;gap:30px;align-items:center}
+.mark{font-size:clamp(58px,17vw,112px);line-height:.95;font-weight:700;letter-spacing:-1px;margin:0 0 14px;color:var(--cream);text-shadow:0 3px 0 rgba(0,0,0,.35)}
+.mark b{color:var(--coral);text-shadow:1px 1px 0 #B85A36,2px 2px 0 #B85A36,3px 3px 0 #B85A36,4px 4px 0 #B85A36,5px 5px 0 #B85A36,6px 6px 0 #8F4128,7px 7px 0 #8F4128,8px 8px 8px rgba(0,0,0,.4)}
+.handle{font-size:26px;color:var(--gold);margin:0 0 6px}
+.pill{display:inline-block;font-weight:500;letter-spacing:2px;font-size:13px;text-transform:uppercase;background:rgba(242,194,107,.16);color:var(--gold);border:1px solid rgba(242,194,107,.5);border-radius:999px;padding:6px 14px}
+h1{font-size:34px;line-height:1.08;margin:14px 0 16px;font-weight:700;letter-spacing:-.5px}
+h1 em{font-style:normal;color:var(--coral);position:relative;white-space:nowrap}
+h1 em:after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:8px;background:repeating-linear-gradient(90deg,var(--sage) 0 12px,transparent 12px 18px);border-radius:4px}
+.lead{font-size:20px;margin:0 0 24px;max-width:520px;color:#F1DFCB}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.stack{position:relative;height:370px;max-width:480px;width:100%;margin:0 auto}
+.pol{position:absolute;width:46%;background:#fff;padding:8px 8px 30px;border-radius:10px;box-shadow:0 14px 32px rgba(0,0,0,.45)}
+.pol img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;border-radius:4px;background:#ddd}
+.pol span{position:absolute;left:0;right:0;bottom:4px;text-align:center;color:var(--brown);font-size:22px;line-height:1.1}
+.p1{left:0;top:14%;transform:rotate(-8deg)}
+.p2{left:27%;top:0;transform:rotate(3deg);z-index:2}
+.p3{right:0;top:20%;transform:rotate(9deg)}
+.sticker{position:absolute;left:2%;bottom:0;z-index:3;width:104px;height:104px;border-radius:50%;background:var(--coral);color:#3A1E12;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:700;font-size:16px;line-height:1.05;transform:rotate(-12deg);box-shadow:0 6px 16px rgba(0,0,0,.4);border:3px dashed #3A1E12;border-style:dashed}
+.marq{background:var(--coral);color:#3A1E12;overflow:hidden;white-space:nowrap;font-weight:700;font-size:18px;letter-spacing:2px;padding:12px 0;text-transform:uppercase}
+.marq .track{display:inline-block;animation:mv 30s linear infinite}
+.marq span{display:inline-block;padding-right:28px}
+@keyframes mv{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marq .track{animation:none}html{scroll-behavior:auto}}
+section{padding:56px 0}
+h2{font-size:36px;margin:0 0 8px;font-weight:700;letter-spacing:-.3px}
+.sub{margin:0 0 26px;font-size:18px;color:var(--sage-d)}
+.cats{display:grid;gap:14px;grid-template-columns:1fr;margin-bottom:22px}
+.cat{display:grid;grid-template-columns:120px 1fr;padding:0;border:0;border-radius:24px;overflow:hidden;cursor:pointer;text-align:left;font-family:'Fredoka',sans-serif;color:#fff;transition:transform .15s;outline-offset:3px}
+.cat:hover{transform:translateY(-3px)}
+.cat img{width:100%;height:100%;object-fit:cover;display:block;min-height:120px}
+.cat .t{padding:14px 16px;display:flex;flex-direction:column;justify-content:center;gap:2px}
+.cat .t b{font-size:26px;font-weight:700;line-height:1.05}
+.cat .t i{font-style:normal;font-size:15px;opacity:.9}
+.cat .t u{text-decoration:none;margin-top:6px;font-weight:600;font-size:15px}
+.cat[aria-pressed="true"]{box-shadow:0 0 0 4px var(--gold)}
+.cat[aria-pressed="true"] .t u:before{content:"✓ ";}
+.n-natal{--c:#9E2B25;--c2:#F2C26B;--ink:#3A1E12}
+.n-sh{--c:#17171C;--c2:#F2C94C;--ink:#17171C}
+.n-grinch{--c:#3F7F2F;--c2:#C5E8A8;--ink:#17301A}
+.cat{background:var(--c)}
+.cat .t u{color:var(--c2)}
+.filters{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.flabel{font-size:14px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--sage-d)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding:0 18px;border-radius:999px;border:2px solid var(--brown);background:transparent;color:var(--brown);font:500 16px 'Fredoka',sans-serif;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--brown);color:var(--cream)}
+.all{display:none;margin-bottom:14px}
+.grid{display:grid;gap:20px;grid-template-columns:1fr}
+.card{background:#fff9f1;border-radius:26px;overflow:hidden;border:1px solid var(--cream2);display:flex;flex-direction:column;box-shadow:0 6px 18px rgba(107,58,42,.08);transition:transform .15s}
+.card:hover{transform:translateY(-4px)}
+.card .ph{aspect-ratio:1/1;overflow:hidden;background:var(--cream2)}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.tag{align-self:flex-start;font-size:13px;font-weight:600;background:var(--c2);color:var(--ink);border-radius:999px;padding:3px 12px}
+.card h3{margin:2px 0 0;font-size:24px;font-weight:700;line-height:1.1}
+.card p{margin:0 0 8px;font-size:16px;flex:1}
+.card .meta{font-size:14px;margin:0;opacity:.8}
+.card .price{font-size:14px;font-weight:600;margin:0 0 8px;opacity:.9}
+.card .btn.small{background:var(--c);color:var(--cream)}
+.card.n-sh{background:#1B1B20;color:#F5F1E8;border-color:#2c2c34}
+.card.n-sh .ph{background:#2c2c34}
+.card.n-sh .btn.small{background:var(--c2);color:#17171C}
+.card.n-sh .thumb{background:#2c2c34}
+.card.n-grinch{background:#EEF7E6;border-color:#cfe5bd;color:#1F3B16}
+.card.n-grinch .btn.small{background:#3F7F2F;color:#fff}
+.card.n-natal .btn.small{background:#9E2B25;color:#fff}
+.orders{display:flex;gap:8px}
+.orders .btn.small{flex:1;padding:0 10px;font-size:15px}
+.card .btn.small.wa,.btn.wa{background:#25D366;color:#06371A}
+.card .btn.small.ig,.btn.ig{background:#fff;color:#B0206F;border:2px solid #C13584}
+.card.n-sh .btn.small.ig{background:transparent;color:#F5F1E8;border-color:#F5F1E8}
+.card.n-sh .btn.small.wa,.card.n-grinch .btn.small.wa,.card.n-natal .btn.small.wa{background:#25D366;color:#06371A}
+.btn.wa:hover{background:#3BE27A}
+.thumbs{display:flex;gap:6px;padding:10px 14px 0;flex-wrap:wrap}
+.thumb{width:48px;height:48px;padding:0;border-radius:10px;overflow:hidden;border:2px solid transparent;cursor:pointer;background:var(--cream2)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb[aria-pressed="true"]{border-color:var(--coral)}
+.soon{text-align:center;margin:30px 0 0;color:var(--sage-d);font-size:17px}
+.more{border:3px dashed var(--sage);border-radius:26px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px;gap:6px;min-height:200px}
+.more .hand{font-size:32px;color:var(--sage-d);line-height:1}
+.steps{display:grid;gap:16px;grid-template-columns:1fr}
+.step{background:var(--dark);color:var(--cream);border-radius:26px;padding:24px;position:relative}
+.step .n{width:46px;height:46px;border-radius:50%;background:var(--coral);color:#3A1E12;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px;margin-bottom:12px}
+.step h3{margin:0 0 4px;font-size:22px}
+.step p{margin:0;font-size:16px;color:#F1DFCB}
+.about{background:var(--cream2)}
+.about .wrap{display:grid;gap:24px;align-items:center}
+.about p{font-size:19px;margin:0 0 12px;max-width:560px}
+.about .hand{font-size:30px;color:var(--coral)}
+.layers{width:100%;max-width:280px;margin:0 auto}
+footer{background:var(--dark) repeating-linear-gradient(0deg,rgba(122,154,106,.13) 0 2px,transparent 2px 10px);color:var(--cream);text-align:center;padding:56px 20px 90px}
+footer h2{color:var(--cream);font-size:38px}
+footer p{margin:6px 0 22px;color:#F1DFCB}
+footer .hand{font-size:28px;color:var(--gold);margin-top:22px}
+footer small{display:block;margin-top:10px;color:#C9A892}
+.fab{position:fixed;right:16px;bottom:16px;z-index:8;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.35);text-decoration:none}
+.fab svg{width:32px;height:32px}
+@media(min-width:720px){
+.hero{padding:64px 0 72px}
+.hero .wrap{grid-template-columns:1.05fr .95fr;gap:48px}
+h1{font-size:46px}
+.stack{height:500px}
+.pol span{font-size:26px}
+.sticker{width:124px;height:124px;font-size:19px}
+.cats{grid-template-columns:repeat(3,1fr)}
+.cat{grid-template-columns:1fr}
+.cat img{aspect-ratio:4/3;height:auto}
+.cat .t{padding:16px 18px 20px}
+.cat .t b{font-size:30px}
+.grid{grid-template-columns:repeat(3,1fr)}
+.steps{grid-template-columns:repeat(3,1fr)}
+.about .wrap{grid-template-columns:1fr 300px}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<a class="brand" href="#topo" aria-label="Lelecos 3D, início">
+<svg width="44" height="44" viewBox="0 0 36 36" role="img" aria-hidden="true"><polygon points="18,4 31,15 31,32 5,32 5,15" fill="#FBEEDD"/><rect x="5" y="9" width="26" height="2" fill="#7A9A6A"/><rect x="5" y="14" width="26" height="2" fill="#7A9A6A"/><path d="M18 29 C10 23 11 17 15 17 C17 17 18 19 18 20 C18 19 19 17 21 17 C25 17 26 23 18 29Z" fill="#E8825A"/></svg>
+<span>Lelecos <b>3D</b></span>
+</a>
+<a class="btn small" style="width:auto" href="#catalogo">Ver catálogo</a>
+</div>
+</header>
+
+<main id="topo">
+<div class="hero">
+<div class="wrap">
+<div>
+<div class="mark">Lelecos <b>3D</b></div>
+<div class="handle hand">@lelecos3d</div>
+<span class="pill">Impresso em 3D · Feito em família</span>
+<h1>Peças com <em>cara de família</em>, camada por camada</h1>
+<p class="lead">Natal, super-heróis e muito mais. Cada peça sai da nossa casa para a sua, com capricho e personalidade.</p>
+<div class="cta-row">
+<a class="btn" href="#catalogo">Ver catálogo</a>
+<a class="btn wa" data-wa="Olá! Vi o site da Lelecos 3D e quero fazer um pedido.">WhatsApp</a>
+<a class="btn ig" data-ig="Olá! Vi o site da Lelecos 3D e quero fazer um pedido.">Instagram</a>
+</div>
+</div>
+<div class="stack" aria-hidden="false">
+<div class="pol p1"><img src="img/arvore.jpg" alt="Enfeite dourado de Natal com árvore e renas"><span class="hand">Natal</span></div>
+<div class="pol p2"><img src="img/batman-1.jpg" alt="Estátua do Batman impressa em 3D" style="object-position:center 30%"><span class="hand">Cavaleiro das Trevas</span></div>
+<div class="pol p3"><img src="img/venom-1.jpg" alt="Busto preto com traje simbionte impresso em 3D"><span class="hand">Simbionte</span></div>
+<div class="sticker">Sob<br>enco&shy;menda</div>
+</div>
+</div>
+</div>
+
+<div class="marq" aria-hidden="true"><div class="track">
+<span>Natal ✦ Super-heróis ✦ Grinch ✦ Sob encomenda ✦ Feito em família ✦</span><span>Natal ✦ Super-heróis ✦ Grinch ✦ Sob encomenda ✦ Feito em família ✦</span><span>Natal ✦ Super-heróis ✦ Grinch ✦ Sob encomenda ✦ Feito em família ✦</span><span>Natal ✦ Super-heróis ✦ Grinch ✦ Sob encomenda ✦ Feito em família ✦</span>
+</div></div>
+
+<section id="catalogo">
+<div class="wrap">
+<h2>Escolha sua categoria</h2>
+<p class="sub">Toque em uma categoria e depois filtre por tipo de peça. Em cada peça, peça direto pelo WhatsApp ou pelo Instagram, com a mensagem pronta.</p>
+<div class="cats" id="cats" role="group" aria-label="Categorias"></div>
+<button type="button" class="chip all" id="all">← Mostrar todas as categorias</button>
+<div class="filters" role="group" aria-label="Filtro por tipo">
+<span class="flabel">Tipo de peça</span><div class="chips" id="f-type"></div>
+</div>
+<div class="grid" id="grid"></div>
+<p class="soon">Algumas imagens são ilustrativas; cores e detalhes podem variar. Valores sob consulta.</p>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>Como pedir</h2>
+<p class="sub">Simples e sem complicação.</p>
+<div class="steps">
+<div class="step"><div class="n">1</div><h3>Escolha</h3><p>Veja o catálogo e escolha o modelo que mais combina com você.</p></div>
+<div class="step"><div class="n">2</div><h3>Chame a gente</h3><p>Toque em WhatsApp ou Instagram e envie a mensagem já pronta.</p></div>
+<div class="step"><div class="n">3</div><h3>Combine os detalhes</h3><p>Passamos o valor, combinamos quantidade e entrega.</p></div>
+</div>
+</div>
+</section>
+
+<section class="about">
+<div class="wrap">
+<div>
+<div class="hand">nossa história</div>
+<h2>Criado em família, feito com amor</h2>
+<p>A Lelecos 3D nasceu em casa. Cada peça é impressa em 3D, camada por camada, para decorar, presentear e colecionar.</p>
+<p><a class="btn alt" style="color:var(--brown)" href="https://instagram.com/lelecos3d">Siga @lelecos3d</a></p>
+</div>
+<svg class="layers" viewBox="0 0 200 200" role="img" aria-label="Casa feita de camadas de impressão 3D com um coração no centro"><polygon points="100,16 180,84 180,184 20,184 20,84" fill="#6B3A2A"/><g fill="#7A9A6A"><rect x="20" y="44" width="160" height="5"/><rect x="20" y="62" width="160" height="5"/><rect x="20" y="80" width="160" height="5"/></g><g fill="#E8825A"><rect x="20" y="98" width="160" height="5"/></g><path d="M100 160 C62 130 64 94 86 94 C95 94 100 101 100 107 C100 101 105 94 114 94 C136 94 138 130 100 160Z" fill="#F4E1CB"/></svg>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="mark" style="font-size:clamp(46px,12vw,80px)">Lelecos <b>3D</b></div>
+<h2 style="font-size:30px">Qual peça vai ser a sua?</h2>
+<p>Mande a mensagem já pronta pelo WhatsApp ou pelo Instagram.</p>
+<div class="cta-row" style="justify-content:center"><a class="btn wa" data-wa="Olá! Vi o site da Lelecos 3D e quero fazer um pedido.">Pedir no WhatsApp</a><a class="btn ig" data-ig="Olá! Vi o site da Lelecos 3D e quero fazer um pedido.">Pedir no Instagram</a></div>
+<div class="hand">com carinho, família Lelecos ♥</div>
+<small>Lelecos 3D · @lelecos3d · WhatsApp (61) 99903-2081</small>
+</footer>
+
+<a class="fab" id="fab" aria-label="Chamar no WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16 3C9 3 3.4 8.6 3.4 15.5c0 2.3.6 4.4 1.7 6.3L3 29l7.4-2c1.8 1 3.7 1.500 5.600 1.500 7 0 12.600-5.600 12.600-12.500S23 3 16 3zm0 22.800c-1.800 0-3.500-.5-5-1.400l-.4-.2-4.400 1.200 1.200-4.300-.3-.4a10.300 10.300 0 0 1-1.600-5.500C5.500 9.800 10.200 5.200 16 5.200s10.500 4.600 10.500 10.300S21.800 25.800 16 25.800zm5.700-7.700c-.3-.2-1.900-.9-2.200-1s-.5-.2-.7.200-.8 1-1 1.200-.4.200-.7.100a8.500 8.500 0 0 1-4.200-3.700c-.3-.6.300-.5.900-1.700.1-.2 0-.4 0-.5l-1-2.300c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400s-1 1-1 2.500 1.100 2.900 1.200 3.100 2.100 3.300 5.200 4.500c2 .8 2.800.9 3.800.7.600-.1 1.900-.8 2.200-1.500s.3-1.400.2-1.500-.3-.2-.6-.4z"/></svg></a>
+
+<div id="toast" role="status" style="display:none;position:fixed;left:16px;right:16px;bottom:16px;z-index:9;background:#6B3A2A;color:#FBEEDD;padding:16px 20px;border-radius:16px;font-size:17px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.25)"></div>
+<script>
+var WHATSAPP = '5561999032081';
+var INSTAGRAM_DM = 'https://ig.me/m/lelecos3d';
+var ARV = 'Enfeites de árvore';
+var MESA = 'Mesa posta';
+var DOCES = 'Porta-doces e lembranças';
+var DECO = 'Decoração';
+var FOTO = 'Porta-fotos';
+var SH = 'Super-heróis', EST='Estátuas', BUS='Bustos';
+var PRODUCTS = [
+ {name:'Estátua Batman Cavaleiro das Trevas', img:'batman-1', imgs:['batman-1','batman-2'], tall:1, alt:'Estátua do Batman de capa, com a mão no queixo, em base redonda', niche:SH, type:EST, tag:'Preto', desc:'Batman de capa longa e postura imponente, com base redonda texturizada.'},
+ {name:'Estátua Demolidor sentado', img:'demolidor-1', imgs:['demolidor-1','demolidor-2'], tall:1, alt:'Estátua branca do Demolidor sentado em mureta gótica segurando o bastão', niche:SH, type:EST, tag:'Branco', desc:'Demolidor sentado em mureta gótica, com o bastão nas mãos e base detalhada.'},
+ {name:'Busto Homem-Aranha simbionte', img:'venom-1', imgs:['venom-1','venom-2','venom-3','venom-costas-1','venom-costas-2'], tall:1, alt:'Busto preto do Homem-Aranha com traje simbionte e tentáculos na base', niche:SH, type:BUS, tag:'Preto', desc:'Busto com traje simbionte, muitos detalhes em relevo e base de tentáculos.'},
+ {name:'Busto Pantera Negra', img:'pantera-1', imgs:['pantera-1','pantera-costas'], tall:1, alt:'Busto preto do Pantera Negra com máscara detalhada e garras no peito', niche:SH, type:BUS, tag:'Preto', desc:'Busto com máscara cheia de detalhes, colar de garras e base redonda.'},
+ {name:'Árvore, renas e presentes', img:'arvore', alt:'Bola de Natal dourada com árvore, duas renas e presentes', niche:'Natal', type:ARV, tag:'Dourado', desc:'Árvore enfeitada com duas renas, presentes e estrelas penduradas.'},
+ {name:'Cervo entre os pinheiros', img:'cervo', alt:'Bola de Natal dourada com cervo, pinheiros e estrelas', niche:'Natal', type:ARV, tag:'Dourado', desc:'Um cervo elegante entre pinheiros, com duas estrelinhas penduradas.'},
+ {name:'Estrela cadente e Casinha de neve', img:'casa', alt:'Duas bolas de Natal douradas: estrela cadente e casinha com neve', niche:'Natal', type:ARV, tag:'Dourado · 2 modelos', desc:'Dois cenários de Natal: a estrela cadente com pinheiros e a casinha com flocos de neve.'},
+ {name:'Presépio e Anjinho', img:'presepio', alt:'Duas bolas de Natal douradas: presépio e anjo', niche:'Natal', type:ARV, tag:'Dourado · 2 modelos', desc:'Para quem gosta do lado mais afetivo do Natal: presépio com a estrela e um anjinho.'},
+ {name:'Renas na colina e Trenó', img:'treno', alt:'Duas bolas de Natal douradas: renas na colina e trenó', niche:'Natal', type:ARV, tag:'Dourado · 2 modelos', desc:'Uma rena sob a estrela cadente e o trenó voando entre as colinas.'},
+ {name:'Kit de enfeites brancos vazados', img:'vazados-brancos', alt:'Oito enfeites brancos vazados: árvore, Papai Noel, boneco de neve, rena, estrela, meia, bola e sino', niche:'Natal', type:ARV, tag:'Kit · Branco', desc:'Árvore, Papai Noel, boneco de neve, rena, estrela, meia, bola e sino, todos com detalhes vazados.'},
+ {name:'Kit de enfeites de contorno', img:'contorno', alt:'Enfeites de Natal em linhas: casinha, coração, bola, presente e vela', niche:'Natal', type:ARV, tag:'Kit · Colorido', desc:'Casinha, coração, bola, presente e vela com azevinho, em traço delicado e várias cores.'},
+ {name:'Kit de enfeites vermelhos e brancos', img:'vermelhos', alt:'Doze enfeites de Natal vermelhos e brancos', niche:'Natal', type:ARV, tag:'Kit · Colorido', desc:'Bolas, gorro, Papai Noel, árvore, boneco de neve, bengalas, presente, rena, meia e sino.'},
+ {name:'Kit Grinch: 10 carinhas', img:'grinch-rostos', alt:'Dez enfeites de árvore com rostos do Grinch de gorro vermelho', niche:'Grinch', type:ARV, tag:'Kit · Colorido', desc:'Dez rostinhos com expressões diferentes para pendurar na árvore.'},
+
+ {name:'Porta-guardanapo árvore', img:'guardanapo-arvore', alt:'Argola de guardanapo em formato de árvore de Natal com estrela dourada', niche:'Natal', type:MESA, tag:'Colorido', desc:'Argola em formato de árvore, com estrela dourada e bolinhas vermelhas.'},
+ {name:'Argola gorro de Papai Noel', img:'anel-chapeu', alt:'Argola de guardanapo vermelha com gorro de Papai Noel branco', niche:'Natal', type:MESA, tag:'Vermelho e branco', desc:'Argola vermelha com gorro e pompom brancos para a mesa da ceia.'},
+ {name:'Porta-guardanapos Papai Noel', img:'suporte-papainoel', alt:'Suporte de guardanapos com rosto sorridente de Papai Noel', niche:'Natal', type:MESA, tag:'Colorido', desc:'Suporte com carinha sorridente de Papai Noel, em várias cores.'},
+
+ {name:'Amigos doces: conjunto de 4', img:'amigos-doces', alt:'Quatro figuras de Natal segurando bombons: Papai Noel, boneco de gorro, árvore e rena', niche:'Natal', type:DOCES, tag:'Conjunto de 4', desc:'Papai Noel, boneco de gorro, árvore e rena, cada um com um bombom.', fit:'contain'},
+ {name:'Caixa árvore de Natal', img:'caixa-arvore', alt:'Caixa em formato de árvore de Natal aberta com bombons dentro', niche:'Natal', type:DOCES, tag:'Colorido', desc:'Caixa em formato de árvore, com tampa e estrela dourada, para bombons e docinhos.'},
+ {name:'Árvore de Natal 2 em 1', img:'arvore-2em1', alt:'Árvore de Natal verde em prateleiras com doces e, deitada, como petisqueira', niche:'Natal', type:DOCES, tag:'2 em 1', desc:'Em pé, serve de porta-doces e lembranças; deitada, vira petisqueira.'},
+
+ {name:'Coleção canelada: gnomo, rena, árvore e boneco de neve', img:'colecao-canelada', alt:'Gnomo vermelho, rena dourada, árvore verde em espiral e boneco de neve branco sobre bandeja branca', niche:'Natal', type:DECO, tag:'Colorido', desc:'Quatro peças com textura canelada: gnomo vermelho, rena dourada, árvore verde com estrela e boneco de neve de gorro e cachecol.'},
+ {name:'Casinha de Natal com Papai Noel', img:'casa-papainoel', alt:'Casinha branca com Papai Noel acenando na chaminé, sobre base redonda', niche:'Natal', type:DECO, tag:'Branco', desc:'Casinha com telhado, porta e janelas detalhadas, e um Papai Noel acenando na chaminé.'},
+ {name:'Casinha e árvore espiral', img:'casa-arvore', alt:'Casinha branca ao lado de árvore verde em espiral com estrela dourada', niche:'Natal', type:DECO, tag:'Branco e verde', desc:'Casinha branca ao lado de uma árvore verde em espiral com estrela dourada, em base de neve.'},
+ {name:'Placa Feliz Natal', img:'feliz-natal', alt:'Placa vermelha escrita Feliz Natal com árvore, estrela e bolinha', niche:'Natal', type:DECO, tag:'Vermelho', desc:'Letreiro “Feliz Natal” com árvore, estrela e bolinha, para ficar em pé.'},
+ {name:'Trio de gnomos de Natal', img:'gnomos', alt:'Três gnomos de Natal em silhueta preta', niche:'Natal', type:DECO, tag:'Trio', desc:'Três gnomos em silhueta: um com caneca, um com lanterna e um com árvore.', fit:'contain'},
+ {name:'Luminária Grinch', img:'grinch-luminaria', alt:'Grinch de gorro em peça vazada com velinha acesa dentro', niche:'Grinch', type:DECO, tag:'Colorido', desc:'Grinch de gorro em estrutura vazada, com espaço para uma velinha na base.'},
+ {name:'Grinch natalino', img:'grinch', alt:'Peça colorida de Natal em 3D com personagem verde de gorro vermelho', niche:'Grinch', type:DECO, tag:'Colorido', desc:'Peça colorida, impressa em camadas, com gorro vermelho e cara de poucos amigos.'},
+
+ {name:'Porta-retrato gorro de Papai Noel', img:'portaretrato', alt:'Porta-retrato vermelho com gorro de Papai Noel e borda de pompons', niche:'Natal', type:FOTO, tag:'Vermelho e branco', desc:'Moldura com gorro de Papai Noel e borda de pompons, com pezinhos para ficar em pé.'},
+ {name:'Suportes de foto Instax', img:'instax', alt:'Três fotos instantâneas apoiadas em suportes: meia, árvore e estrela', niche:'Natal', type:FOTO, tag:'3 modelos', desc:'Meia, árvore e estrela que seguram a sua foto instantânea em pé.'}
+];
+
+var NICHES = {
+  'Natal':{cover:'arvore',cls:'n-natal',line:'Enfeites, mesa posta e decoração'},
+  'Super-heróis':{cover:'batman-1',cls:'n-sh',line:'Estátuas e bustos'},
+  'Grinch':{cover:'grinch',cls:'n-grinch',line:'Verde e cheio de personalidade'}
+};
+var sel = {niche:'Todos', type:'Todos'};
+function uniq(k,list){var r=['Todos'];(list||PRODUCTS).forEach(function(p){if(r.indexOf(p[k])<0)r.push(p[k]);});return r;}
+function nm(n){return NICHES[n]||{cover:'arvore',cls:'n-natal',line:''};}
+function toast(msg,copied){
+  var e=document.getElementById('toast');e.innerHTML='';
+  var p=document.createElement('div');
+  p.textContent=copied?'Mensagem copiada! Abra o chat, cole e envie:':'Copie esta mensagem e cole no chat do Instagram:';
+  var q=document.createElement('div');q.style.cssText='margin:8px 0;font-weight:600';q.textContent=msg;
+  var l=document.createElement('a');l.href=INSTAGRAM_DM;l.target='_blank';l.rel='noopener';l.textContent='Abrir chat do Instagram';
+  l.style.cssText='display:inline-block;margin-top:4px;padding:10px 20px;border-radius:999px;background:#E8825A;color:#3A1E12;text-decoration:none;font-weight:600';
+  var x=document.createElement('button');x.type='button';x.textContent='Fechar';
+  x.style.cssText='margin-left:10px;padding:10px 16px;border-radius:999px;border:2px solid #FBEEDD;background:transparent;color:#FBEEDD;font:500 16px Fredoka,sans-serif;cursor:pointer';
+  x.onclick=function(){e.style.display='none';};
+  e.appendChild(p);e.appendChild(q);e.appendChild(l);e.appendChild(x);e.style.display='block';
+}
+function copyMsg(msg){
+  var ok=false;
+  try{
+    var ta=document.createElement('textarea');ta.value=msg;ta.setAttribute('readonly','');ta.style.cssText='position:fixed;top:0;left:0;opacity:0';
+    document.body.appendChild(ta);ta.select();ta.setSelectionRange(0,msg.length);
+    ok=document.execCommand('copy');document.body.removeChild(ta);
+  }catch(e){}
+  toast(msg,ok);
+}
+function wa(msg){return 'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg);}
+function igClick(a,msg){a.href=INSTAGRAM_DM;a.onclick=function(ev){ev.preventDefault();copyMsg(msg);};}
+function chips(id,key,list){
+  var box=document.getElementById(id);box.innerHTML='';
+  uniq(key,list).forEach(function(v){
+    var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=v;
+    b.setAttribute('aria-pressed',sel[key]===v?'true':'false');
+    b.onclick=function(){sel[key]=v;render();};
+    box.appendChild(b);
+  });
+}
+function cats(){
+  var box=document.getElementById('cats');box.innerHTML='';
+  uniq('niche').slice(1).forEach(function(n){
+    var m=nm(n);
+    var b=document.createElement('button');b.type='button';b.className='cat '+m.cls;
+    b.setAttribute('aria-pressed',sel.niche===n?'true':'false');
+    var im=document.createElement('img');im.src='img/'+m.cover+'.jpg';im.alt='';
+    if(m.cls==='n-sh'){im.style.objectPosition='center 30%';}
+    var t=document.createElement('span');t.className='t';
+    var a=document.createElement('b');a.textContent=n;
+    var i=document.createElement('i');i.textContent=m.line;
+    var u=document.createElement('u');u.textContent=PRODUCTS.filter(function(p){return p.niche===n;}).length+' modelos · ver peças →';
+    t.appendChild(a);t.appendChild(i);t.appendChild(u);
+    b.appendChild(im);b.appendChild(t);
+    b.onclick=function(){sel.niche=(sel.niche===n?'Todos':n);render();if(sel.niche!=='Todos'){document.getElementById('f-type').scrollIntoView({behavior:'smooth',block:'center'});}};
+    box.appendChild(b);
+  });
+}
+function render(){
+  var inNiche=PRODUCTS.filter(function(p){return sel.niche==='Todos'||p.niche===sel.niche;});
+  if(uniq('type',inNiche).indexOf(sel.type)<0){sel.type='Todos';}
+  cats();chips('f-type','type',inNiche);
+  var all=document.getElementById('all');all.style.display=sel.niche==='Todos'?'none':'inline-block';
+  all.onclick=function(){sel.niche='Todos';sel.type='Todos';render();};
+  var g=document.getElementById('grid');g.innerHTML='';
+  PRODUCTS.filter(function(p){return (sel.niche==='Todos'||p.niche===sel.niche)&&(sel.type==='Todos'||p.type===sel.type);}).forEach(function(p){
+    var c=document.createElement('article');c.className='card '+nm(p.niche).cls;
+    var ph=document.createElement('div');ph.className='ph';if(p.tall){ph.style.aspectRatio='4/5';}
+    var im=document.createElement('img');im.src='img/'+p.img+'.jpg';im.alt=p.alt;if(p.fit){im.style.objectFit=p.fit;}im.loading='lazy';ph.appendChild(im);
+    var th=null;
+    if(p.imgs&&p.imgs.length>1){
+      th=document.createElement('div');th.className='thumbs';
+      p.imgs.forEach(function(n,i){
+        var tb=document.createElement('button');tb.type='button';tb.className='thumb';tb.setAttribute('aria-label','Ver foto '+(i+1));
+        tb.setAttribute('aria-pressed',i===0?'true':'false');
+        var ti=document.createElement('img');ti.src='img/'+n+'.jpg';ti.alt='';ti.loading='lazy';tb.appendChild(ti);
+        tb.onclick=function(){im.src='img/'+n+'.jpg';th.querySelectorAll('.thumb').forEach(function(x){x.setAttribute('aria-pressed','false');});tb.setAttribute('aria-pressed','true');};
+        th.appendChild(tb);
+      });
+    }
+    var bd=document.createElement('div');bd.className='body';
+    var t=document.createElement('span');t.className='tag';t.textContent=p.tag;
+    var h=document.createElement('h3');h.textContent=p.name;
+    var m=document.createElement('p');m.className='meta';m.textContent=p.niche+' · '+p.type;
+    var d=document.createElement('p');d.textContent=p.desc;
+    var pr=document.createElement('p');pr.className='price';pr.textContent='Valor sob consulta';
+    var mg='Olá! Quero pedir: '+p.name+' (Lelecos 3D).';
+    var od=document.createElement('div');od.className='orders';
+    var a=document.createElement('a');a.className='btn small wa';a.textContent='WhatsApp';a.href=wa(mg);a.target='_blank';a.rel='noopener';
+    var b2=document.createElement('a');b2.className='btn small ig';b2.textContent='Instagram';igClick(b2,mg);
+    od.appendChild(a);od.appendChild(b2);
+    bd.appendChild(t);bd.appendChild(h);bd.appendChild(m);bd.appendChild(d);bd.appendChild(pr);bd.appendChild(od);
+    c.appendChild(ph);if(th)c.appendChild(th);c.appendChild(bd);g.appendChild(c);
+  });
+  var mo=document.createElement('div');mo.className='more';
+  mo.innerHTML='<div class="hand">tem mais vindo…</div><div>Novas categorias e modelos em breve.</div>';
+  g.appendChild(mo);
+}
+render();
+document.querySelectorAll('[data-wa]').forEach(function(a){a.href=wa(a.getAttribute('data-wa'));a.target='_blank';a.rel='noopener';});
+document.querySelectorAll('[data-ig]').forEach(function(a){igClick(a,a.getAttribute('data-ig'));});
+var fab=document.getElementById('fab');var fm='Olá! Vi o site da Lelecos 3D e quero fazer um pedido.';fab.href=wa(fm);fab.target='_blank';fab.rel='noopener';
+</script>
+</body>
+</html>
