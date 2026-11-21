@@ -82,7 +82,8 @@ h2{font-size:36px;margin:0 0 8px;font-weight:700;letter-spacing:-.3px}
 .card h3{margin:2px 0 0;font-size:24px;font-weight:700;line-height:1.1}
 .card p{margin:0 0 8px;font-size:16px;flex:1}
 .card .meta{font-size:14px;margin:0;opacity:.8}
-.card .price{font-size:14px;font-weight:600;margin:0 0 8px;opacity:.9}
+.card .price{display:inline-block;font-size:20px;font-weight:700;margin:2px 0 12px;padding:6px 16px;border-radius:30px;border:2px solid currentColor;opacity:1}
+.card .price.ask{font-size:14px;font-weight:600;border-color:transparent;padding-left:0;opacity:.85}
 .card .btn.small{background:var(--c);color:var(--cream)}
 .card.n-sh{background:#1B1B20;color:#F5F1E8;border-color:#2c2c34}
 .card.n-sh .ph{background:#2c2c34}
@@ -189,7 +190,7 @@ h1{font-size:46px}
 <span class="flabel">Tipo de peça</span><div class="chips" id="f-type"></div>
 </div>
 <div class="grid" id="grid"></div>
-<p class="soon">Algumas imagens são ilustrativas; cores e detalhes podem variar. Valores sob consulta.</p>
+<p class="soon">Algumas imagens são ilustrativas; cores e detalhes podem variar. Peças sem preço indicado: valor sob consulta.</p>
 </div>
 </section>
 
@@ -361,7 +362,7 @@ function render(){
     var h=document.createElement('h3');h.textContent=p.name;
     var m=document.createElement('p');m.className='meta';m.textContent=p.niche+' · '+p.type;
     var d=document.createElement('p');d.textContent=p.desc;
-    var pr=document.createElement('p');pr.className='price';pr.textContent=p.price||'Valor sob consulta';
+    var pr=document.createElement('p');pr.className='price';pr.textContent=p.price||'Valor sob consulta';if(!p.price)pr.className='price ask';
     var mg='Olá! Quero pedir: '+p.name+' (Lelecos 3D).';
     var od=document.createElement('div');od.className='orders';
     var a=document.createElement('a');a.className='btn small wa';a.textContent='WhatsApp';a.href=wa(mg);a.target='_blank';a.rel='noopener';
