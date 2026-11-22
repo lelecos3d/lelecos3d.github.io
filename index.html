@@ -64,6 +64,7 @@ h2{font-size:36px;margin:0 0 8px;font-weight:700;letter-spacing:-.3px}
 .n-natal{--c:#9E2B25;--c2:#F2C26B;--ink:#3A1E12}
 .n-sh{--c:#17171C;--c2:#F2C94C;--ink:#17171C}
 .n-grinch{--c:#3F7F2F;--c2:#C5E8A8;--ink:#17301A}
+.n-f1{--c:#D8201A;--c2:#F2C94C;--ink:#17171C}
 .cat{background:var(--c)}
 .cat .t u{color:var(--c2)}
 .filters{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
@@ -82,13 +83,18 @@ h2{font-size:36px;margin:0 0 8px;font-weight:700;letter-spacing:-.3px}
 .card h3{margin:2px 0 0;font-size:24px;font-weight:700;line-height:1.1}
 .card p{margin:0 0 8px;font-size:16px;flex:1}
 .card .meta{font-size:14px;margin:0;opacity:.8}
-.card .price{display:inline-block;font-size:20px;font-weight:700;margin:2px 0 12px;padding:6px 16px;border-radius:30px;border:2px solid currentColor;opacity:1}
+.card .price{display:inline-block;align-self:flex-start;font-size:20px;font-weight:700;margin:2px 0 12px;padding:6px 16px;border-radius:30px;border:2px solid currentColor;opacity:1}
 .card .price.ask{font-size:14px;font-weight:600;border-color:transparent;padding-left:0;opacity:.85}
 .card .btn.small{background:var(--c);color:var(--cream)}
 .card.n-sh{background:#1B1B20;color:#F5F1E8;border-color:#2c2c34}
 .card.n-sh .ph{background:#2c2c34}
 .card.n-sh .btn.small{background:var(--c2);color:#17171C}
 .card.n-sh .thumb{background:#2c2c34}
+.card.n-f1{background:#17171C;color:#F5F1E8;border-color:#2c2c34}
+.card.n-f1 .ph,.card.n-f1 .thumb{background:#2c2c34}
+.card.n-f1 .btn.small{background:#D8201A;color:#fff}
+.card.n-f1 .btn.small.wa{background:#25D366;color:#06371A}
+.card.n-f1 .btn.small.ig{background:transparent;color:#F5F1E8;border-color:#F5F1E8}
 .card.n-grinch{background:#EEF7E6;border-color:#cfe5bd;color:#1F3B16}
 .card.n-grinch .btn.small{background:#3F7F2F;color:#fff}
 .card.n-natal .btn.small{background:#9E2B25;color:#fff}
@@ -239,7 +245,7 @@ var MESA = 'Mesa posta';
 var DOCES = 'Porta-doces e lembranças';
 var DECO = 'Decoração';
 var FOTO = 'Porta-fotos';
-var SH = 'Super-heróis', EST='Estátuas', BUS='Bustos';
+var SH = 'Super-heróis', EST='Estátuas', BUS='Bustos', F1='Fórmula 1', QUA='Quadros';
 var PRODUCTS = [
  {name:'Estátua Batman Cavaleiro das Trevas', img:'batman-1', imgs:['batman-1','batman-2'], tall:1, alt:'Estátua do Batman de capa, com a mão no queixo, em base redonda', niche:SH, type:EST, tag:'Preto', desc:'Batman de capa longa e postura imponente, com base redonda texturizada.'},
  {name:'Estátua Demolidor sentado', img:'demolidor-1', imgs:['demolidor-1','demolidor-2'], tall:1, alt:'Estátua branca do Demolidor sentado em mureta gótica segurando o bastão', niche:SH, type:EST, tag:'Branco', desc:'Demolidor sentado em mureta gótica, com o bastão nas mãos e base detalhada.'},
@@ -274,13 +280,15 @@ var PRODUCTS = [
  {name:'Grinch natalino', price:'R$ 20', img:'grinch', alt:'Peça colorida de Natal em 3D com personagem verde de gorro vermelho', niche:'Grinch', type:DECO, tag:'Colorido', desc:'Peça colorida, impressa em camadas, com gorro vermelho e cara de poucos amigos.'},
 
  {name:'Porta-retrato gorro de Papai Noel', img:'portaretrato', alt:'Porta-retrato vermelho com gorro de Papai Noel e borda de pompons', niche:'Natal', type:FOTO, tag:'Vermelho e branco', desc:'Moldura com gorro de Papai Noel e borda de pompons, com pezinhos para ficar em pé.'},
- {name:'Suportes de foto Instax', img:'instax', alt:'Três fotos instantâneas apoiadas em suportes: meia, árvore e estrela', niche:'Natal', type:FOTO, tag:'3 modelos', desc:'Meia, árvore e estrela que seguram a sua foto instantânea em pé.'}
+ {name:'Suportes de foto Instax', img:'instax', alt:'Três fotos instantâneas apoiadas em suportes: meia, árvore e estrela', niche:'Natal', type:FOTO, tag:'3 modelos', desc:'Meia, árvore e estrela que seguram a sua foto instantânea em pé.'},
+ {name:'Quadro calendário Fórmula 1 2027', price:'R$ 49,90', img:'f1-calendario-1', imgs:['f1-calendario-1','f1-calendario-2'], tall:1, alt:'Quadro preto com moldura vermelha mostrando os 24 circuitos da temporada de Fórmula 1 de 2027, cada um com nome e data', niche:F1, type:QUA, tag:'Preto e vermelho', desc:'Os 24 circuitos da temporada 2027 em relevo, com nome do local e data de cada corrida. Para pendurar ou apoiar na estante.'},
 ];
 
 var NICHES = {
   'Natal':{cover:'arvore',cls:'n-natal',line:'Enfeites, mesa posta e decoração'},
   'Super-heróis':{cover:'batman-1',cls:'n-sh',line:'Estátuas e bustos'},
-  'Grinch':{cover:'grinch',cls:'n-grinch',line:'Verde e cheio de personalidade'}
+  'Grinch':{cover:'grinch',cls:'n-grinch',line:'Verde e cheio de personalidade'},
+  'Fórmula 1':{cover:'f1-calendario-1',cls:'n-f1',line:'Circuitos e calendário da temporada'}
 };
 var sel = {niche:'Todos', type:'Todos'};
 function uniq(k,list){var r=['Todos'];(list||PRODUCTS).forEach(function(p){if(r.indexOf(p[k])<0)r.push(p[k]);});return r;}
