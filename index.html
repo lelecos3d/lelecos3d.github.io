@@ -145,6 +145,14 @@ h1{font-size:46px}
 .steps{grid-template-columns:repeat(3,1fr)}
 .about .wrap{grid-template-columns:1fr 300px}
 }
+.promo{background:var(--dark);color:var(--cream);border-bottom:4px solid var(--coral)}
+.promo .wrap{display:grid;gap:18px;align-items:center;padding-top:22px;padding-bottom:22px}
+.promo img{width:100%;max-height:340px;object-fit:cover;object-position:center 55%;border-radius:16px;display:block}
+.promo .tag{display:inline-block;background:var(--coral);color:#3A1E12;font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;border-radius:999px;padding:5px 14px}
+.promo h2{font-size:30px;line-height:1.08;margin:10px 0 8px;color:var(--cream)}
+.promo p{margin:0 0 14px;font-size:18px;color:#F1DFCB}
+.promo .price{font-size:44px;font-weight:700;color:var(--gold);line-height:1;margin:0 0 16px}
+@media(min-width:720px){.promo .wrap{grid-template-columns:1fr 1fr;gap:36px}.promo img{max-height:420px}.promo h2{font-size:40px}}
 </style>
 </head>
 <body>
@@ -185,6 +193,16 @@ h1{font-size:46px}
 <div class="marq" aria-hidden="true"><div class="track">
 <span>Natal ✦ Super-heróis ✦ Grinch ✦ Sob encomenda ✦ Feito em família ✦</span><span>Natal ✦ Super-heróis ✦ Grinch ✦ Sob encomenda ✦ Feito em família ✦</span><span>Natal ✦ Super-heróis ✦ Grinch ✦ Sob encomenda ✦ Feito em família ✦</span><span>Natal ✦ Super-heróis ✦ Grinch ✦ Sob encomenda ✦ Feito em família ✦</span>
 </div></div>
+
+<div class="promo" id="kit-natal"><div class="wrap">
+<img src="img/kit-grinch-arvore.jpg" alt="Grinch colorido de moletom vermelho ao lado da árvore de Natal vazada com velinha acesa" loading="lazy">
+<div>
+<span class="tag">Kit de Natal</span>
+<h2>Grinch colorido + Árvore luminária</h2>
+<p>O Grinch de moletom vermelho e a árvore vazada com estrelas, renas e pinheiros, para acender com uma velinha.</p>
+<div class="price">R$ 70</div>
+<a class="btn wa" data-wa="Olá! Vi o Kit de Natal (Grinch + Árvore luminária) por R$ 70 no site da Lelecos 3D e quero pedir.">Quero o kit</a>
+</div></div></div>
 
 <section id="catalogo">
 <div class="wrap">
@@ -247,6 +265,7 @@ var DECO = 'Decoração';
 var FOTO = 'Porta-fotos';
 var SH = 'Super-heróis', EST='Estátuas', BUS='Bustos', F1='Fórmula 1', QUA='Quadros', ACE='Acessórios';
 var PRODUCTS = [
+ {name:'Kit Natal: Grinch + Árvore luminária', price:'Kit R$ 70', img:'kit-grinch-arvore', tall:1, alt:'Grinch colorido de moletom vermelho ao lado da árvore de Natal vazada com velinha acesa', niche:'Grinch', type:DECO, tag:'Kit · Colorido', desc:'Grinch colorido de moletom vermelho e árvore vazada com estrelas, renas e pinheiros, para acender com uma velinha.'},
  {name:'Estátua Batman Cavaleiro das Trevas', img:'batman-1', imgs:['batman-1','batman-2'], tall:1, alt:'Estátua do Batman de capa, com a mão no queixo, em base redonda', niche:SH, type:EST, tag:'Preto', desc:'Batman de capa longa e postura imponente, com base redonda texturizada.'},
  {name:'Estátua Demolidor sentado', img:'demolidor-1', imgs:['demolidor-1','demolidor-2'], tall:1, alt:'Estátua branca do Demolidor sentado em mureta gótica segurando o bastão', niche:SH, type:EST, tag:'Branco', desc:'Demolidor sentado em mureta gótica, com o bastão nas mãos e base detalhada.'},
  {name:'Busto Homem-Aranha simbionte', img:'venom-1', imgs:['venom-1','venom-2','venom-3','venom-costas-1','venom-costas-2'], tall:1, alt:'Busto preto do Homem-Aranha com traje simbionte e tentáculos na base', niche:SH, type:BUS, tag:'Preto', desc:'Busto com traje simbionte, muitos detalhes em relevo e base de tentáculos.'},
